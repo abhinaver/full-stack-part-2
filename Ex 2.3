@@ -1,0 +1,44 @@
+import React from 'react';
+
+const App = () => {
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      },
+      {
+        name: 'Advanced React',
+        exercises: 5
+      }
+    ]
+  }
+
+  const total = course.parts.reduce((s, p) => {
+    console.log('Accumulated sum (s):', s, 'Current part (p):', p);
+    return s + p.exercises;
+  }, 0);
+
+  return (
+    <div>
+      <h1>{course.name}</h1>
+      <ul>
+        {course.parts.map(part =>
+          <li key={part.name}>{part.name} {part.exercises}</li>
+        )}
+      </ul>
+      <h3>Total exercises: {total}</h3>
+    </div>
+  )
+}
+
+export default App;
