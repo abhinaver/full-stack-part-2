@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+
+const App = () => {
+  // Initial state with some example data
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas', number: '040-1234567' }
+  ]);
+  const [newName, setNewName] = useState('');
+  const [newNumber, setNewNumber] = useState('');
+
+  // Handle name input changes
+  const handleNameChange = (event) => {
+    setNewName(event.target.value);
+  };
+
+  // Handle number input changes
+  const handleNumberChange = (event) => {
+    setNewNumber(event.target.value);
+  };
+
+  // Handle form submission
+  const handleAddPerson = (event) => {
+    event.preventDefault();
+
+    // Add new person with name and number
+    const newPerson = { name: newName, number: newNumber };
+    setPersons(persons.concat(newPerson));  // Add to the list
+    setNewName('');  // Clear name input
+    setNewNumber('');  // Clear number input
+  };
+
+  return (
+    <div>
+      <h2>Phonebook</h2>
+
+      {/* Form for adding a new person */}
+      <form onSubmit={handleAddPerson}>
+        <div>
+          name: <input 
+                  value={newName} 
+                  onChange={handleNameChange} 
+                />
+        </div>
+        <div>
+          number: <input 
+                   value={newNumber} 
+                   onChange={handleNumberChange} 
+                 />
+        </div>
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+
+      <h2>Numbers</h2>
+      <p>
+        {persons.map(person => (
+          <li key={person.name}>{person.name} {person.number}</li>
+        ))}
+      </p>
+    </div>
+  );
+};
+
+export default App;
