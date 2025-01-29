@@ -1,3 +1,3 @@
-# full-stack-open pat2
+# full-stack-open part2
 
 [Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/abhinaver/full-stack-open)
